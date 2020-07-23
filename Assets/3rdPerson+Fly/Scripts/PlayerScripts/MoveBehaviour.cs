@@ -154,11 +154,11 @@ public class MoveBehaviour : GenericBehaviour
 		// Lerp current direction to calculated target direction.
 		if ((behaviourManager.IsMoving() && targetDirection != Vector3.zero))
 		{
-			Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+			//Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
-			Quaternion newRotation = Quaternion.Slerp(behaviourManager.GetRigidBody.rotation, targetRotation, behaviourManager.turnSmoothing);
-			behaviourManager.GetRigidBody.MoveRotation(newRotation);
-			behaviourManager.SetLastDirection(targetDirection);
+			//Quaternion newRotation = Quaternion.Slerp(behaviourManager.GetRigidBody.rotation, targetRotation, behaviourManager.turnSmoothing);
+			//behaviourManager.GetRigidBody.MoveRotation(newRotation);
+			//behaviourManager.SetLastDirection(targetDirection);
 		}
 		// If idle, Ignore current camera facing and consider last moving direction.
 		if (!(Mathf.Abs(horizontal) > 0.9 || Mathf.Abs(vertical) > 0.9))

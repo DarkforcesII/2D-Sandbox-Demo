@@ -88,8 +88,18 @@ public class BasicBehaviour : MonoBehaviour
 		anim.SetBool(groundedBool, IsGrounded());
 	}
 
-	// Call the FixedUpdate functions of the active or overriding behaviours.
-	void FixedUpdate()
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Grass")
+        {
+            groundedBool = Animator.StringToHash("Grounded");
+            colExtents = GetComponent<Collider>().bounds.extents;
+            //print("collided");
+        }
+    }
+
+    // Call the FixedUpdate functions of the active or overriding behaviours.
+    void FixedUpdate()
 	{
 		// Call the active behaviour if no other is overriding.
 		bool isAnyBehaviourActive = false;
