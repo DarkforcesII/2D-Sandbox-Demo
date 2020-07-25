@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class RingScript : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider trigger)
     {
-        if (collision.collider.tag == "Player")
+        if (trigger.tag == "Player")
         {
             Destroy(gameObject);
         }
