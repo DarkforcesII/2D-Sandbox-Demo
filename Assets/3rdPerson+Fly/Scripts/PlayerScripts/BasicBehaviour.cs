@@ -96,12 +96,6 @@ public class BasicBehaviour : MonoBehaviour
             colExtents = GetComponent<Collider>().bounds.extents;
             //print("collided");
         }
-
-        if (collision.collider.tag == "Deadzone")
-        {
-            print("deadzone");
-            transform.position = new Vector3(-12.08f, 0, -1);
-        }
     }
 
     // Call the FixedUpdate functions of the active or overriding behaviours.
