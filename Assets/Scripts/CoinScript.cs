@@ -15,5 +15,10 @@ public class CoinScript : MonoBehaviour
             audioContainer.PlayCoinSFX();
             //print("it worked");
         }
+        if (other.tag == "End")
+        {
+            audioContainer.StopMusicSource3();
+            audioContainer.PlayMusicSource4();
+        }
     }
 }

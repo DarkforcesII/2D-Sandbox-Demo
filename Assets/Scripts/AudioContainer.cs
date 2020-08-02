@@ -9,10 +9,10 @@ public class AudioContainer : MonoBehaviour
     public AudioSource musicSource1;
     public AudioSource musicSource2;
     public AudioSource musicSource3;
+    public AudioSource musicSource4;
     public AudioSource sfxSource;
 
     public AudioClip[] jumpClips;
-    public AudioClip[] landClips;
     public AudioClip[] musicClips;
     public AudioClip coinSFX;
 
@@ -56,6 +56,15 @@ public class AudioContainer : MonoBehaviour
         musicSource3.volume = volume;
         musicSource3.loop = true;
         musicSource3.Play();
+    }
+    public void PlayMusicSource4()
+    {
+        musicSource4.clip = musicClips[3];
+        musicSource4.Play();
+    }
+    public void StopMusicSource3()
+    {
+        musicSource3.Stop();
     }
     #endregion
 
