@@ -17,8 +17,6 @@ public class MoveBehaviour : GenericBehaviour
 	private bool jump;                              // Boolean to determine whether or not the player started a jump.
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
 
-    public AudioContainer audioContainer;
-
 	// Start is always called after any Awake functions.
 	void Start()
 	{
@@ -87,9 +85,6 @@ public class MoveBehaviour : GenericBehaviour
 			// Has landed?
 			if ((behaviourManager.GetRigidBody.velocity.y < 0) && behaviourManager.IsGrounded())
 			{
-                // land sfx
-                audioContainer.PlayLandClips();
-
                 behaviourManager.GetAnim.SetBool(groundedBool, true);
 				// Change back player friction to default.
 				GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
