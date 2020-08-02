@@ -11,10 +11,12 @@ public class AudioContainer : MonoBehaviour
     public AudioSource musicSource3;
     public AudioSource musicSource4;
     public AudioSource sfxSource;
+    public AudioSource uiSource;
 
     public AudioClip[] jumpClips;
     public AudioClip[] musicClips;
     public AudioClip coinSFX;
+    public AudioClip[] uiClips;
 
     private bool playLandSfx;
     private float lerpSpeed1;
@@ -32,6 +34,14 @@ public class AudioContainer : MonoBehaviour
     {
         sfxSource.clip = coinSFX;
         sfxSource.Play();
+    }
+    public void PointerEnterSFX()
+    {
+        uiSource.PlayOneShot(uiClips[0]);
+    }
+    public void PointerClickSFX()
+    {
+        uiSource.PlayOneShot(uiClips[1]);
     }
     #endregion
 
