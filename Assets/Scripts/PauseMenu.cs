@@ -11,6 +11,16 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public AudioMixer Lowpass;
 
+    private void Awake()
+    {
+        SceneManager.GetActiveScene();
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Level_One");
+    }
+
     public void Resume()
     {
         //lowpass off
