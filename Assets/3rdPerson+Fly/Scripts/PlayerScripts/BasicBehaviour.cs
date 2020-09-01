@@ -103,8 +103,9 @@ public class BasicBehaviour : MonoBehaviour
     {
         if (other.tag == "End")
         {
-            audioContainer.StopMusicSource3();
-            audioContainer.PlayMusicSource4();
+            //audioContainer.StopMusicSource3();
+            //audioContainer.PlayMusicSource4();
+            GameManager.Instance.LoadNextScene();
         }
     }
 
