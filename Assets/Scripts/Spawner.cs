@@ -11,6 +11,10 @@ public class Spawner : MonoBehaviour
     private bool sourceTwo = false;
     private bool sourceThree = false;
 
+    public Transform spawnPointOne;
+    public Transform spawnPointTwo;
+    public Transform spawnPointThree;
+
     private void Start()
     {
         audioContainer.PlayMusicSource1();
@@ -50,17 +54,16 @@ public class Spawner : MonoBehaviour
 
             if (spawnerCount == 0)
             {
-                transform.position = new Vector3(-12.08f, 0, -1);
+                transform.position = new Vector3(spawnPointOne.position.x, spawnPointOne.position.y, spawnPointOne.position.z);
             }
             if (spawnerCount == 1)
             {
-                transform.position = new Vector3(50.85776f, -2.85f, -1);
+                transform.position = new Vector3(spawnPointTwo.position.x, spawnPointTwo.position.y, spawnPointTwo.position.z);
             }
             if (spawnerCount == 2)
             {
-                transform.position = new Vector3(84.88776f, -0.6399999f, -1);
+                transform.position = new Vector3(spawnPointThree.position.x, spawnPointThree.position.y, spawnPointThree.position.z);
             }
-
         }
     }
 }
