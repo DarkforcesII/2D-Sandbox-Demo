@@ -66,4 +66,18 @@ public class Spawner : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "End")
+        {
+            //audioContainer.StopMusicSource3();
+            //audioContainer.PlayMusicSource4();
+            GameManager.Instance.LoadNextScene();
+        }
+        if (other.tag == "FinalStage")
+        {
+            GameManager.Instance.LoadMainMenu();
+        }
+    }
 }

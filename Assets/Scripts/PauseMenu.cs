@@ -38,6 +38,24 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
+    public void BacktoMainMenu()
+    {
+        //lowpass off
+        NewFadeScript.thisScript.LowpassOn = false;
+        //NewFadeScript.thisScript.ResetLP();
+
+        //GameManager.Instance.LoadMainMenu();
+
+        StartCoroutine(LoadMainMenuDelayed());
+    }
+
+    IEnumerator LoadMainMenuDelayed()
+    {
+        yield return new WaitForSecondsRealtime(2.5f);
+        Time.timeScale = 1f;
+        GameManager.Instance.LoadMainMenu();
+    }
+
     public void QuitGame()
     {
         Application.Quit();

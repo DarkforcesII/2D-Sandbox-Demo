@@ -99,15 +99,6 @@ public class BasicBehaviour : MonoBehaviour
             //print("collided");
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "End")
-        {
-            //audioContainer.StopMusicSource3();
-            //audioContainer.PlayMusicSource4();
-            GameManager.Instance.LoadNextScene();
-        }
-    }
 
     // Call the FixedUpdate functions of the active or overriding behaviours.
     void FixedUpdate()
