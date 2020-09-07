@@ -80,4 +80,9 @@ public class Spawner : MonoBehaviour
             GameManager.Instance.LoadMainMenu();
         }
     }
+
+    private void Update()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, -1);
+    }
 }
