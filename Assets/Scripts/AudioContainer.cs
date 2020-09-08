@@ -22,6 +22,8 @@ public class AudioContainer : MonoBehaviour
     private float lerpSpeed2;
     public float fadeInTime = 0.5f;
 
+    public float coinPitch = 1;
+
     // sfx methods
     #region
     public void PlayJumpClips()
@@ -31,6 +33,7 @@ public class AudioContainer : MonoBehaviour
     }
     public void PlayCoinSFX()
     {
+        sfxSource.pitch = coinPitch;
         sfxSource.clip = coinSFX;
         sfxSource.Play();
     }
