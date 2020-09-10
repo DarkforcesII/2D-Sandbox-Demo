@@ -31,9 +31,13 @@ public class Spawner : MonoBehaviour
             if (sourceTwo == false)
             {
                 sourceTwo = true;
-                audioContainer.StartCrossfadeOne();
+                //audioContainer.StartCrossfadeOne();
                 //audioContainer.StopMusicSource1();
                 //audioContainer.PlayMusicSource2(1.0f);
+
+                // for web build
+                audioContainer.StopMusicSource1();
+                audioContainer.MusicSource2Vol(1);
             }
         }
         if (collision.collider.tag == "SpawnPointThree")
@@ -43,9 +47,13 @@ public class Spawner : MonoBehaviour
             if (sourceThree == false)
             {
                 sourceThree = true;
-                audioContainer.StartCrossfadeTwo();
+                //audioContainer.StartCrossfadeTwo();
                 //audioContainer.StopMusicSource2();
                 //audioContainer.PlayMusicSource3(1.0f);
+
+                // for web build
+                audioContainer.StopMusicSource2();
+                audioContainer.MusicSource3Vol(1);
             }
         }
         if (collision.collider.tag == "Deadzone")
