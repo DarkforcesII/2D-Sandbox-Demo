@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioContainer : MonoBehaviour
 {
+    // makes it easier to access scripts
+    public static AudioContainer audioContainer;
+
     public AudioSource jumpSource;
     public AudioSource musicSource1;
     public AudioSource musicSource2;
@@ -11,11 +14,15 @@ public class AudioContainer : MonoBehaviour
     public AudioSource musicSource4;
     public AudioSource sfxSource;
     public AudioSource uiSource;
+    public AudioSource footStepSource;
+    public AudioSource landSource;
 
     public AudioClip[] jumpClips;
     public AudioClip[] musicClips;
     public AudioClip coinSFX;
     public AudioClip[] uiClips;
+    public AudioClip[] footStepClips;
+    public AudioClip[] landClips;
 
     private bool playLandSfx;
     private float lerpSpeed1;
@@ -41,6 +48,19 @@ public class AudioContainer : MonoBehaviour
     public void PointerClickSFX()
     {
         uiSource.PlayOneShot(uiClips[1]);
+    }
+    public void PlayFootSteps()
+    {
+        footStepSource.pitch = Random.Range(0.85f, 1.1f);
+        footStepSource.PlayOneShot(footStepClips[Random.Range(0, footStepClips.Length)]);
+    }
+    public void FootSetpsOnOff(float volume)
+    {
+        footStepSource.volume = volume;
+    }
+    public void PlayLandVoiceOver()
+    {
+        landSource.PlayOneShot(landClips[Random.Range(0, landClips.Length)]);
     }
     #endregion
 
