@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using System;
 
 // This class manages which player behaviour is active or overriding, and call its local functions.
 // Contains basic setup and common functions used by all the player behaviours.
@@ -32,6 +34,10 @@ public class BasicBehaviour : MonoBehaviour
 
     public AudioContainer audioContainer;
 
+    // for mobile input
+    public Button forwardButton;
+    private bool moving;
+
 	// Get current horizontal and vertical axes.
 	public float GetH { get { return h; } }
 	public float GetV { get { return v; } }
@@ -62,10 +68,28 @@ public class BasicBehaviour : MonoBehaviour
 		// Grounded verification variables.
 		groundedBool = Animator.StringToHash("Grounded");
 		colExtents = GetComponent<Collider>().bounds.extents;
-	}
+    }
 
-	void Update()
+    // for android movement
+    #region
+    public void MoveForward()
+    {
+        moving = true;
+    }
+
+    public void StopMoving()
+    {
+        moving = false;
+    }
+    #endregion
+
+    void Update()
 	{
+        if (moving == true)
+        {
+            anim.SetFloat("Speed", 0.8f);
+        }
+
 		// Store the input axes.
 		h = Input.GetAxis("Horizontal");
 		v = Input.GetAxis("Vertical");

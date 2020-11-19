@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 // MoveBehaviour inherits from GenericBehaviour. This class corresponds to basic walk and run behaviour, it is the default behaviour.
 public class MoveBehaviour : GenericBehaviour 
@@ -18,6 +19,7 @@ public class MoveBehaviour : GenericBehaviour
 	private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
 
     public AudioContainer audioContainer;
+    public Button jButton;
 
 	// Start is always called after any Awake functions.
 	void Start()
@@ -26,12 +28,21 @@ public class MoveBehaviour : GenericBehaviour
 		jumpBool = Animator.StringToHash("Jump");
 		groundedBool = Animator.StringToHash("Grounded");
 		behaviourManager.GetAnim.SetBool(groundedBool, true);
+        jButton.onClick.AddListener(Jump);
 
 		// Subscribe and register this behaviour as the default behaviour.
 		behaviourManager.SubscribeBehaviour(this);
 		behaviourManager.RegisterDefaultBehaviour(this.behaviourCode);
 		speedSeeker = runSpeed;
 	}
+
+
+    // for android movement
+    private void Jump()
+    {
+        //print("it works");
+        jump = true;
+    }
 
 	// Update is used to set features regardless the active behaviour.
 	void Update()

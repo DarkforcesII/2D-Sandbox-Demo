@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +12,24 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public AudioMixer Lowpass;
+    public Button pasueButton;
+
+    private void Awake()
+    {
+        pasueButton.onClick.AddListener(PauseGame);
+    }
+
+    private void PauseGame()
+    {
+        if (GameIsPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
+        }
+    }
 
     public void Resume()
     {
