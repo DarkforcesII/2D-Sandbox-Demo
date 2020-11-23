@@ -16,17 +16,6 @@ public class SkipLevel : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void OnMouseDown()
-    {
-        //basicBehaviour.MoveForward();
-        if (Input.GetMouseButtonDown(0))
-        {
-            basicBehaviour.MoveForward();
-            //anim.SetFloat("Speed", 0.8f);
-        }
-        //anim.SetFloat("Speed", 0.8f);
-    }
-
     private void NextLevel()
     {
         //GameManager.Instance.LoadNextScene();

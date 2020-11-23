@@ -35,8 +35,7 @@ public class BasicBehaviour : MonoBehaviour
     public AudioContainer audioContainer;
 
     // for mobile input
-    public Button forwardButton;
-    private bool moving;
+    public Joystick joystickHandle;
 
 	// Get current horizontal and vertical axes.
 	public float GetH { get { return h; } }
@@ -70,26 +69,8 @@ public class BasicBehaviour : MonoBehaviour
 		colExtents = GetComponent<Collider>().bounds.extents;
     }
 
-    // for android movement
-    #region
-    public void MoveForward()
-    {
-        moving = true;
-    }
-
-    public void StopMoving()
-    {
-        moving = false;
-    }
-    #endregion
-
     void Update()
 	{
-        if (moving == true)
-        {
-            anim.SetFloat("Speed", 0.8f);
-        }
-
 		// Store the input axes.
 		h = Input.GetAxis("Horizontal");
 		v = Input.GetAxis("Vertical");
@@ -114,6 +95,13 @@ public class BasicBehaviour : MonoBehaviour
 		}
 		// Set the grounded test on the Animator Controller.
 		anim.SetBool(groundedBool, IsGrounded());
+
+        // android joystick movement
+        //horiztonalMove = joystick.Horizontal;
+        if (joystickHandle.Horizontal > 0)
+        {
+            anim.SetFloat("Speed", 0.8f);
+        }
 	}
 
     private void OnCollisionEnter(Collision collision)
