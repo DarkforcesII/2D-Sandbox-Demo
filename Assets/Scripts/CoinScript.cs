@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class CoinScript : MonoBehaviour
@@ -13,7 +14,6 @@ public class CoinScript : MonoBehaviour
         {
             Destroy(gameObject);
             audioContainer.PlayCoinSFX();
-            //print("it worked");
         }
     }
 }

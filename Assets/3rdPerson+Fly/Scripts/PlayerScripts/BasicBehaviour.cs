@@ -34,6 +34,10 @@ public class BasicBehaviour : MonoBehaviour
 
     public AudioContainer audioContainer;
 
+    // tracking coin count
+    private int coinCount = 0;
+    public Text coinText;
+
     // for mobile input
     public Joystick joystickHandle;
 
@@ -54,19 +58,26 @@ public class BasicBehaviour : MonoBehaviour
 	public int GetDefaultBehaviour {  get { return defaultBehaviour; } }
 
 	void Awake ()
-	{
-		// Set up the references.
-		behaviours = new List<GenericBehaviour> ();
-		overridingBehaviours = new List<GenericBehaviour>();
-		anim = GetComponent<Animator> ();
-		hFloat = Animator.StringToHash("H");
-		vFloat = Animator.StringToHash("V");
-		camScript = playerCamera.GetComponent<ThirdPersonOrbitCamBasic> ();
-		rBody = GetComponent<Rigidbody> ();
+    {
+        // Set up the references.
+        behaviours = new List<GenericBehaviour>();
+        overridingBehaviours = new List<GenericBehaviour>();
+        anim = GetComponent<Animator>();
+        hFloat = Animator.StringToHash("H");
+        vFloat = Animator.StringToHash("V");
+        camScript = playerCamera.GetComponent<ThirdPersonOrbitCamBasic>();
+        rBody = GetComponent<Rigidbody>();
 
-		// Grounded verification variables.
-		groundedBool = Animator.StringToHash("Grounded");
-		colExtents = GetComponent<Collider>().bounds.extents;
+        // Grounded verification variables.
+        groundedBool = Animator.StringToHash("Grounded");
+        colExtents = GetComponent<Collider>().bounds.extents;
+
+        SetCoinCnt();
+    }
+
+    private void SetCoinCnt()
+    {
+        coinText.text = coinCount.ToString();
     }
 
     void Update()
@@ -132,6 +143,27 @@ public class BasicBehaviour : MonoBehaviour
                 hasLanded = false;
                 audioContainer.FootSetpsOnOff(0.0f);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Coin")
+        {
+            coinCount++;
+            SetCoinCnt();
+            //print(coinCount);
+            //print("it worked");
+        }
+        else if (other.tag == "End")
+        {
+            coinCount++;
+            SetCoinCnt();
+        }
+        else if (other.tag == "FinalStage")
+        {
+            coinCount++;
+            SetCoinCnt();
         }
     }
 
